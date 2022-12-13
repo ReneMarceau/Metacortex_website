@@ -11,6 +11,7 @@
 }
 
 body {
+    overflow-x: hidden;
     background-color: black;
 }
 
@@ -49,6 +50,10 @@ a {
     text-decoration: none;
 }
 
+a:hover {
+    cursor: pointer;
+}
+
 #rose_video {
     position: absolute;
     left: 0;
@@ -76,7 +81,7 @@ a {
 }
 
 #l_zoom_img, #r_zoom_img {
-    transition: transform 100ms ease-in-out;
+    transition: transform 80ms ease-in-out;
     transform: scale(1.2);
 }
 
@@ -97,7 +102,7 @@ a {
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-image: url("../public/media/background_synopsis.jpeg");
+    background-image: url("../public/media/background_synopsis.webp");
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -191,24 +196,74 @@ a {
 }
 
 .test_container a {
-    background-image: url(../public/media/background_button.jpeg);
+    background-image: url(../public/media/background_button.webp);
     background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 13rem;
-    transition: color 200ms ease-in-out;
+    transition: color 200ms ease-in-out, transform 300ms ease-in-out;
     font-size: 1.2rem;
     font-weight: 800;
 }
 
 .test_container a:hover {
     color: #03C11E;
+    transform: scale(1.01);
 }
 
 .more_margin {
     margin-bottom: 2rem;
+}
+
+#fade_bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(#000000 10%, #00000056);
+}
+
+#footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10rem;
+    margin: 8rem 0 6rem 0;
+}
+
+#partners_text {
+    min-width: 18rem;
+    padding: 6rem;
+    overflow: hidden;
+}
+
+#partners_text p {
+    font-family: 'Lato', sans-serif;
+    font-size: 3rem;
+    transform: translate(-20rem);
+}
+
+#partners_container {
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+    height: 6rem;
+    border-left: 1px solid white;
+}
+
+#partners_container div {
+    width: 8.4rem;
+    margin: 0 0.6rem;
+    overflow: hidden;
+}
+
+.partners_logo {
+    width: 100%;
+    transform: translate(-20rem);
 }
 
 @keyframes fade_in_text {
@@ -235,6 +290,15 @@ a {
     }
     to {
         width: 55rem;
+    }
+}
+
+@keyframes partners_animation {
+    from {
+        transform: translate(-20rem);
+    }
+    to {
+        transform: translate(0);
     }
 }
 

@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../src/style.css"/>
     <title>Metacortex</title>
 </head>
@@ -25,7 +26,7 @@
   <main>
     <section id="synopsis_section">
       <div class="img-wrapper synopsis_panels">
-        <img id="l_zoom_img" src="media/left_banner.jpeg" alt="Bannière de gauche">
+        <img id="l_zoom_img" class="zoom_img" src="media/left_banner.webp" alt="Bannière de gauche">
       </div>
       <div class="synopsis_panels" id="synopsis_container">
         <h2 style="animation-name: fade_in_header1;" class="header_animation">Synopsis</h2>
@@ -42,7 +43,7 @@
         <mark>Max Track.</mark>
       </div>
       <div class="img-wrapper synopsis_panels">
-        <img id="r_zoom_img" src="media/right_banner.jpeg" alt="Bannière de droite">
+        <img id="r_zoom_img" class="zoom_img" src="media/right_banner.webp" alt="Bannière de droite">
       </div>
     </section>
     <section id="test_section">
@@ -50,21 +51,27 @@
       <div id="test_panels">
         <div class="test_container">
           <div id="head_img" class="test_img"></div>
-          <a href="#">Qui somme nous?</a>
+          <a id="who_button" href="#">Qui somme nous?</a>
         </div>
         <div class="test_container">
           <div id="saturn_img" class="test_img"></div>
           <a href="https://en.tipeee.com/maxtrack" target="_blank">Faire un don</a>
         </div>
         <div class="test_container">
-          <div id="phone_img" class="test_img" src="media/phone_img.jpeg" alt="Téléphone humide"></div>
+          <div id="phone_img" class="test_img" src="media/phone_img.webp" alt="Téléphone humide"></div>
           <a href="#">App dispo le 25 décembre</a>
         </div>
       </div>
     </section>
   </main>
-  <footer>
-
+  <footer id="footer">
+    <div id="partners_text"><p id="text">Partners</p></div>
+    <div id="partners_container">
+      <div><img class="partners_logo" src="media/ecorp_icon.webp" alt="Ecorp logo"></div>
+      <div><img class="partners_logo" src="media/spectre_logo.webp" alt="Spectre logo"></div>
+      <div><img class="partners_logo" src="media/vought_logo.webp" alt="Vought logo"></div>
+      <div><img class="partners_logo" src="media/tree_logo.webp" alt="Tree logo"></div>
+    </div>
   </footer>
     <script src="../src/script.js"></script>
 </body>
