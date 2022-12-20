@@ -224,6 +224,27 @@ a:hover {
     width: 100vw;
     height: 100vh;
     background: linear-gradient(#000000 10%, #00000056);
+    animation-name: fade_bg_animation;
+    animation-duration: 300ms;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+#player_page {
+    display: none;
+    opacity: 0;
+    position: fixed;
+    top: 25%;
+    left: 30%;
+    width: 50rem;
+    height: 35rem;
+    background-color: black;
+    z-index: 2;
+    animation-name: player_page_animation;
+    animation-duration: 1000ms;
+    animation-delay: 400ms;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
 }
 
 #footer {
@@ -290,6 +311,26 @@ a:hover {
     }
     to {
         width: 55rem;
+    }
+}
+
+@keyframes fade_bg_animation {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes player_page_animation {
+    from {
+        opacity: 0;
+        transform: translate(0, 5rem);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
     }
 }
 
