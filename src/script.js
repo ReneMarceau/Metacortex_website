@@ -48,9 +48,9 @@ window.addEventListener("scroll", () => {
     zoom_img[0].style.transform = `scale(${zoom})`;
     zoom_img[1].style.transform = `scale(${zoom})`;
 
-    if (scroll_pos >= 0.13) {
+    if (scroll_pos >= 0.30) {
         test_header.style.animationName = "fade_in_header2";
-        test_header.style.animationDelay = "200ms";
+        test_header.style.animationDelay = "300ms";
         test_header.style.animationDuration = "1500ms";
         test_header.style.animationFillMode = "forwards";
     }

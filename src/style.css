@@ -234,10 +234,10 @@ a:hover {
     display: none;
     opacity: 0;
     position: fixed;
-    top: 25%;
-    left: 30%;
-    width: 50rem;
-    height: 35rem;
+    top: 0;
+    margin: 15% auto;
+    width: 51rem;
+    height: 32rem;
     background-color: black;
     z-index: 2;
     animation-name: player_page_animation;
@@ -245,6 +245,52 @@ a:hover {
     animation-delay: 400ms;
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
+}
+
+#banner_container {
+    padding: 6%;
+}
+
+#banner_container h3 {
+    color: #03C11E;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    letter-spacing: -0.15rem;
+}
+
+#banner_container p {
+    margin-bottom: 0.2rem;
+    font-size: 0.95rem;
+    line-height: 1.5rem;
+}
+
+.player {
+    display: flex;
+    margin-top: 1.5rem;
+    width: 20rem;
+    height: 4.4rem;
+    border: 2px solid white;
+}
+
+.player img {
+    width: 4.4rem;
+    height: 4.4rem;
+}
+
+.player_info {
+    padding: 3%;
+    background-color: #2f2e2e;
+}
+
+.player_info p {
+    color: #1ac126;
+}
+.player_info p span {
+    color: #158624;
+}
+
+#player_page img {
+    width: 50%;
 }
 
 #footer {
@@ -277,7 +323,7 @@ a:hover {
 }
 
 #partners_container div {
-    width: 8.4rem;
+    width: 8.2rem;
     margin: 0 0.6rem;
     overflow: hidden;
 }
