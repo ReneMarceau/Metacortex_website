@@ -223,7 +223,7 @@ a:hover {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(#000000 10%, #00000056);
+    background: linear-gradient(#000000 5%, #00000056);
     animation-name: fade_bg_animation;
     animation-duration: 300ms;
     animation-timing-function: ease-in-out;
@@ -269,24 +269,93 @@ a:hover {
     margin-top: 1.5rem;
     width: 20rem;
     height: 4.4rem;
-    border: 2px solid white;
-}
-
-.player img {
-    width: 4.4rem;
-    height: 4.4rem;
 }
 
 .player_info {
-    padding: 3%;
+    width: 200%;
+    padding: 2% 5%;
     background-color: #2f2e2e;
 }
 
 .player_info p {
     color: #1ac126;
 }
+
 .player_info p span {
     color: #158624;
+}
+
+.player_info p span:before {
+    content: "-";
+    margin-right: 0.3rem;
+}
+
+.player_music {
+    display: flex;
+    align-items: center;
+}
+
+.player_music i {
+    font-size: 1.4rem;
+    margin-right: 0.5rem;
+    color: #03C11E;
+    cursor: pointer;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+    align-items: center;
+    width: 100%;
+    align-items: center;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.controls .slider {
+    height: 0.3rem;
+    margin: 0 5%;
+    flex-grow: 1;
+    background-color: #274c2b;
+    cursor: pointer;
+    position: relative;
+    border-radius: 3px;
+}
+
+.controls .slider .progress {
+    width: 0;
+    height: 100%;
+    background-color: #03C11E;
+    border-radius: inherit;
+    position: absolute;
+    pointer-events: none;
+}
+
+.controls .slider .progress .pin {
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background-color: #03C11E;
+    position: absolute;
+    pointer-events: all; 
+    transition: transform 200ms ease-in-out;
+    right: -3px;
+    top: -0.2px;
+}
+
+.controls:hover .pin, .controls:active .pin {
+    transform: scale(2.5);
+}
+
+.controls span {
+    color: #158624;
+    font-size: 0.75rem;
+}
+
+.controls .current-time::after {
+    content: "/";
+    margin-left: 0.2rem;
 }
 
 #player_page img {

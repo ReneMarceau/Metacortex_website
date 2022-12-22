@@ -9,23 +9,29 @@ const   partners_logo = document.getElementsByClassName("partners_logo");
 const   musics = [
     {
         artist: "Hamza",
-        image: "../media/hamza_img.webp",
-        music: "",
-        duration: "01:40"
+        image: "../public/media/hamza_img.webp",
+        music: "../public/media/music.mp3"
     },
     {
         artist: "Lefa",
-        image: "../media/lefa_img.webp",
-        music: "",
-        duration: "03:12"
+        image: "../public/media/lefa_img.webp",
+        music: "../public/media/music.mp3"
     },
     {
         artist: "LuvResval",
-        image: "../media/luvresval.webp",
-        music: "",
-        duration: "01:00"
+        image: "../public/media/luvresval_img.webp",
+        music: "../public/media/music.mp3"
     }
 ];
+
+var artistImg = document.getElementsByClassName("artist_img");
+var artistName = document.getElementsByClassName("artist_name");
+var artistMusic = document.getElementsByClassName("artist_music");
+for(let i = 0; i < artistName.length; i++){
+    artistImg[i].src = musics[i].image;
+    artistName[i].textContent = musics[i].artist;
+    artistMusic[i].src = musics[i].music;
+}
 
 let     is_on = false;
 let     zoom = 1.2;
@@ -41,7 +47,7 @@ window.addEventListener("scroll", () => {
     const   current_scroll = window.pageYOffset;
     const   scroll_pos = current_scroll / scrollMaxY;
     //console.log(opacity);
-    console.log(scroll_pos);
+    //console.log(scroll_pos);
     if (scroll_pos <= 0.15) {
         zoom = 1.2 - ((current_scroll / 300) / 5);
     }
@@ -91,5 +97,139 @@ who_button.addEventListener("click", (e) => {
     else {
         document.body.removeChild(document.getElementById("fade_bg"));
     }
-    console.log(is_on);
 });
+
+// Player
+
+var audioPlayer = document.querySelectorAll('.player_music');
+var playPause = audioPlayer.querySelectorAll('.playPause');
+var playPauseBtn = audioPlayer.querySelectorAll('.fa-solid');
+var slider = audioPlayer.querySelectorAll('.slider');
+var progress = audioPlayer.querySelectorAll('.progress');
+var player = audioPlayer.querySelectorAll('audio');
+var currentTime = audioPlayer.querySelectorAll('.current-time');
+var totalTime = audioPlayer.querySelectorAll('.total-time');
+
+var draggableClasses = ['pin'];
+var currentlyDragged = null;
+
+
+
+window.addEventListener('mousedown', function(event) {
+  
+    if(!isDraggable(event.target)) return false;
+    
+    currentlyDragged = event.target;
+    let handleMethod = currentlyDragged.dataset.method;
+    
+    this.addEventListener('mousemove', window[handleMethod], false);
+  
+    window.addEventListener('mouseup', () => {
+      currentlyDragged = false;
+      window.removeEventListener('mousemove', window[handleMethod], false);
+    }, false);  
+  });
+
+playPauseBtn.addEventListener('click', togglePlay);
+player.addEventListener('timeupdate', updateProgress);
+player.addEventListener('loadedmetadata', () => {
+  totalTime.textContent = formatTime(player.duration);
+});
+player.addEventListener('canplay', makePlay);
+player.addEventListener('ended', function(){
+  playPause.attributes.value = "M18 12L0 24V0";
+  player.currentTime = 0;
+  playPauseBtn.classList.remove("fa-pause");
+  playPauseBtn.classList.add("fa-play");
+});
+
+let pin = slider.querySelector('.pin');
+slider.addEventListener('click', window[pin.dataset.method]);
+
+function isDraggable(el) {
+  let canDrag = false;
+  let classes = Array.from(el.classList);
+  draggableClasses.forEach(draggable => {
+    if(classes.indexOf(draggable) !== -1)
+      canDrag = true;
+  })
+  return canDrag;
+}
+
+function inRange(event) {
+  let rangeBox = getRangeBox(event);
+  let rect = rangeBox.getBoundingClientRect();
+  let direction = rangeBox.dataset.direction;
+  if(direction == 'horizontal') {
+    var min = rangeBox.offsetLeft;
+    var max = min + rangeBox.offsetWidth;
+  } else {
+      var min = rect.top;
+      var max = min + rangeBox.offsetHeight; 
+    if(event.clientY < min || event.clientY > max) return false;  
+  }
+  return true;
+}
+
+function updateProgress() {
+  var current = player.currentTime;
+  var percent = (current / player.duration) * 100;
+  progress.style.width = percent + '%';
+  currentTime.textContent = formatTime(current);
+}
+
+function getRangeBox(event) {
+  let rangeBox = event.target;
+  let el = currentlyDragged;
+  if(event.type == 'click' && isDraggable(event.target)) {
+    rangeBox = event.target.parentElement.parentElement;
+  }
+  if(event.type == 'mousemove') {
+    rangeBox = el.parentElement.parentElement;
+  }
+  return rangeBox;
+}
+
+function getCoefficient(event) {
+    let slider = getRangeBox(event);
+    let rect = slider.getBoundingClientRect();
+    let K = 0;
+    if(slider.dataset.direction == 'horizontal') {
+      let offsetX = event.clientX - rect.x;
+      let width = slider.clientWidth;
+      K = offsetX / width;
+    }
+    console.log(event.clientX - rect);
+    return K;
+  }
+
+function rewind(event) {
+  if(inRange(event)) {
+    //console.log((player.duration * getCoefficient(event)) - 15);
+    player.currentTime = (player.duration * getCoefficient(event));
+  }
+}
+
+function formatTime(time) {
+  var min = Math.floor(time / 60);
+  var sec = Math.floor(time % 60);
+  return min + ':' + ((sec<10) ? ('0' + sec) : sec);
+}
+
+function togglePlay() {
+  if(player.paused) {
+    playPause.attributes.value = "M0 0h6v24H0zM12 0h6v24h-6z";
+    playPauseBtn.classList.remove("fa-play");
+    playPauseBtn.classList.add("fa-pause");
+    player.play();
+  } else {
+    playPause.attributes.value = "M18 12L0 24V0";
+    playPauseBtn.classList.remove("fa-pause");
+    playPauseBtn.classList.add("fa-play");
+    player.pause();
+  }  
+}
+
+function makePlay() {
+  playPauseBtn.style.display = 'block';
+}
