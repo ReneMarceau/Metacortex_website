@@ -48,9 +48,6 @@ mark {
 a {
     display: inline-block;
     text-decoration: none;
-}
-
-a:hover {
     cursor: pointer;
 }
 
