@@ -65,11 +65,58 @@
         </div>
       </div>
       <div id="player_page">
+        <i id="exit_button" class="fa-solid fa-xmark"></i>
         <div id="banner_container">
           <h3>MaxTrack?</h3>
           <p>Maxtrack est un programme de création de musiques alternatives.</p>
           <p>Voici quelques exemples :</p>
           <div id="players_container">
+            <div style="display: none;" class="player">
+              <img class="artist_img" src="" alt="First artist cover">
+              <div class="player_info">
+                <p>Maxtrack - 1 <span class="artist_name"></span></p>
+                <div class="player_music">
+                  <div class="playPause">
+                    <i class="fa-solid fa-play"></i>
+                  </div>
+                  <div class="controls">
+                    <div class="slider" data-direction="horizontal">
+                      <div class="progress">
+                        <div class="pin" data-method="rewind"></div>
+                      </div>
+                    </div>
+                    <span style="margin-right: 0.2rem;" class="current-time">00:00</span>
+                    <span class="total-time">00:00</span>
+                    <audio crossorigin>
+                      <source class="artist_music" src="" type="audio/mpeg">
+                    </audio>                
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="display: none;" class="player">
+              <img class="artist_img" src="" alt="Second artist cover">
+              <div class="player_info">
+                <p>Maxtrack - 2 <span class="artist_name"></span></p>
+                <div class="player_music">
+                  <div class="playPause">
+                    <i class="fa-solid fa-play"></i>
+                  </div>
+                  <div class="controls">
+                    <div class="slider" data-direction="horizontal">
+                      <div class="progress">
+                        <div class="pin" data-method="rewind"></div>
+                      </div>
+                    </div>
+                    <span style="margin-right: 0.2rem;" class="current-time">00:00</span>
+                    <span class="total-time">00:00</span>
+                    <audio crossorigin preload="metadata">
+                      <source class="artist_music" src="" type="audio/mpeg">
+                    </audio>                
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="player">
               <img class="artist_img" src="" alt="First artist cover">
               <div class="player_info">
@@ -81,13 +128,13 @@
                   <div class="controls">
                     <div class="slider" data-direction="horizontal">
                       <div class="progress">
-                        <div class="pin" id="progress-pin" data-method="rewind"></div>
+                        <div class="pin" data-method="rewind"></div>
                       </div>
                     </div>
                     <span style="margin-right: 0.2rem;" class="current-time">00:00</span>
                     <span class="total-time">00:00</span>
                     <audio crossorigin>
-                      <source class="artist_music" src="" type="audio/mp3">
+                      <source class="artist_music" src="" type="audio/mpeg">
                     </audio>                
                   </div>
                 </div>
@@ -104,13 +151,13 @@
                   <div class="controls">
                     <div class="slider" data-direction="horizontal">
                       <div class="progress">
-                        <div class="pin" id="progress-pin" data-method="rewind"></div>
+                        <div class="pin" data-method="rewind"></div>
                       </div>
                     </div>
                     <span style="margin-right: 0.2rem;" class="current-time">00:00</span>
                     <span class="total-time">00:00</span>
                     <audio crossorigin>
-                      <source class="artist_music" src="" type="audio/mp3">
+                      <source class="artist_music" src="" type="audio/mpeg">
                     </audio>                
                   </div>
                 </div>
@@ -127,13 +174,13 @@
                   <div class="controls">
                     <div class="slider" data-direction="horizontal">
                       <div class="progress">
-                        <div class="pin" id="progress-pin" data-method="rewind"></div>
+                        <div class="pin" data-method="rewind"></div>
                       </div>
                     </div>
                     <span style="margin-right: 0.2rem;" class="current-time">00:00</span>
                     <span class="total-time">00:00</span>
                     <audio crossorigin>
-                      <source class="artist_music" src="" type="audio/mp3">
+                      <source class="artist_music" src="" type="audio/mpeg">
                     </audio>                
                   </div>
                 </div>

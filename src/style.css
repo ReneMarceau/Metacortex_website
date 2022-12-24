@@ -247,6 +247,20 @@ a:hover {
     animation-fill-mode: forwards;
 }
 
+.fa-xmark {
+    position: absolute;
+    left: 95%;
+    font-size: 3.5rem;
+    color: #03C11E;
+    text-shadow: 0 1px 2px black;
+    cursor: pointer;
+    transition: transform 300ms ease-in-out;
+}
+
+.fa-xmark:hover {
+    transform: scale(1.1);
+}
+
 #banner_container {
     padding: 6%;
 }
